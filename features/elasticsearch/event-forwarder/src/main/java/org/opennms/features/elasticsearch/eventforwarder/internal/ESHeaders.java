@@ -36,7 +36,7 @@ import java.util.Map;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.camel.component.bean.BeanInvocation;
-import org.apache.camel.component.elasticsearch.ElasticsearchConfiguration;
+import org.apache.camel.component.elasticsearch.ElasticsearchConstants;
 import org.opennms.core.camel.IndexNameFunction;
 import org.opennms.core.utils.InetAddressUtils;
 import org.opennms.netmgt.alarmd.api.NorthboundAlarm;
@@ -149,8 +149,8 @@ public class ESHeaders {
         if (LOG.isTraceEnabled()) {
             LOG.trace("Computing indexName from @timestamp: " + body.get("@timestamp") + " yields " + indexName);
         }
-        exchange.getOut().setHeader(ElasticsearchConfiguration.PARAM_INDEX_NAME, indexName);
-        exchange.getOut().setHeader(ElasticsearchConfiguration.PARAM_INDEX_TYPE, indexType);
+        exchange.getOut().setHeader(ElasticsearchConstants.PARAM_INDEX_NAME, indexName);
+        exchange.getOut().setHeader(ElasticsearchConstants.PARAM_INDEX_TYPE, indexType);
         exchange.getOut().setBody(body);
     }
 
