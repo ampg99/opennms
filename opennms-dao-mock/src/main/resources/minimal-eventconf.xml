@@ -26,8 +26,8 @@
     <severity>Indeterminate</severity>
   </event>
   <event>
-    <uei>uei.opennms.org/internal/capsd/discPause</uei>
-    <event-label>OpenNMS-defined internal event: capsd discPause</event-label>
+    <uei>uei.opennms.org/internal/discovery/pause</uei>
+    <event-label>OpenNMS-defined internal event: Discovery pause</event-label>
     <descr>
       &lt;p&gt;The services scanning engine has asked discovery to
       pause due to a backlog of interfaces yet to be scanned.
@@ -39,8 +39,8 @@
     <severity>Warning</severity>
   </event>
   <event>
-    <uei>uei.opennms.org/internal/capsd/discResume</uei>
-    <event-label>OpenNMS-defined internal event: capsd discResume</event-label>
+    <uei>uei.opennms.org/internal/discovery/resume</uei>
+    <event-label>OpenNMS-defined internal event: Discovery resume</event-label>
     <descr>
       &lt;p&gt;Capsd is approving discovery to resume adding nodes
       to the Capsd queue.&lt;/p&gt;
@@ -66,8 +66,8 @@
     <severity>Warning</severity>
   </event>
   <event>
-    <uei>uei.opennms.org/internal/capsd/addNode</uei>
-    <event-label>OpenNMS-defined internal event: capsd addNode</event-label>
+    <uei>uei.opennms.org/internal/provisiond/addNode</uei>
+    <event-label>OpenNMS-defined internal event: Provisiond addNode</event-label>
     <descr>
       &lt;p&gt;This event is an external command to add a node
       to the database. The required paramater is the IP
@@ -600,17 +600,6 @@
     </logmsg>
     <severity>Minor</severity>
         <alarm-data reduction-key="%uei%:%dpname%:%nodeid%:%interface%:%parm[snmpifindex]%" alarm-type="1" auto-clean="false"/>
-  </event>
-  <event>
-    <uei>uei.opennms.org/nodes/interfaceIPHostNameChanged</uei>
-    <event-label>OpenNMS-defined node event: interfaceIPHostNameChanged</event-label>
-    <descr>
-      &lt;p&gt;The hostname for this node changed.&lt;/p&gt;
-    </descr>
-    <logmsg dest='logndisplay'>
-      The hostname for this node changed.
-    </logmsg>
-    <severity>Warning</severity>
   </event>
   <event>
     <uei>uei.opennms.org/nodes/interfaceReparented</uei>
