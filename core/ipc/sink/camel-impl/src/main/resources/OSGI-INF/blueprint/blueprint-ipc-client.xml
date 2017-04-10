@@ -15,6 +15,8 @@
       persistent-id="org.opennms.core.ipc" update-strategy="reload">
       <cm:default-properties>
         <cm:property name="body.debug" value="-1" />
+        <!-- Exchanges contain credentials i.e. SNMP community details, so avoid logging them -->
+        <cm:property name="CamelLogDebugBodyMaxChars" value="${body.debug}" />
       </cm:default-properties>
     </cm:property-placeholder>
 
@@ -29,11 +31,6 @@
     <service ref="camelRemoteMessageDispatcherFactory" interface="org.opennms.core.ipc.sink.api.MessageDispatcherFactory"/>
 
     <camelContext id="sinkClient" xmlns="http://camel.apache.org/schema/blueprint">
-      <!-- Exchanges contain credentials i.e. SNMP community details, so avoid logging them -->
-      <properties>
-        <property key="CamelLogDebugBodyMaxChars" value="{{body.debug}}"/>
-      </properties>
-
       <route id="sinkClient">
         <from uri="direct:sendMessage" />
         <setExchangePattern pattern="InOnly"/>

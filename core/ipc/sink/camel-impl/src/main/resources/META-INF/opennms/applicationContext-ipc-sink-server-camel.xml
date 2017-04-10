@@ -37,14 +37,16 @@
     <property name="timeout" value="15"/>
   </bean>
 
-  <bean id="properties" class="org.apache.camel.component.properties.PropertiesComponent" />
+  <bean id="properties" class="org.apache.camel.component.properties.PropertiesComponent">
+    <property name="initialProperties">
+      <props>
+        <!-- Exchanges contain credentials i.e. SNMP community details, so avoid logging them -->
+        <prop key="CamelLogDebugBodyMaxChars">${sys:org.opennms.ipc.camel.body.debug:-1}</prop>
+      </props>
+    </property>
+  </bean>
 
   <camelContext id="sinkServer" xmlns="http://camel.apache.org/schema/spring">
-    <!-- Exchanges contain credentials i.e. SNMP community details, so avoid logging them -->
-    <properties>
-      <property key="CamelLogDebugBodyMaxChars" value="{{sys:org.opennms.ipc.camel.body.debug:-1}}"/>
-    </properties>
-
     <!-- The routes are managed by the CamelMessageConsumerManager -->
   </camelContext>
 

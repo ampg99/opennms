@@ -15,6 +15,8 @@
         persistent-id="org.opennms.core.ipc" update-strategy="reload">
         <cm:default-properties>
             <cm:property name="body.debug" value="-1" />
+            <!-- Exchanges contain credentials i.e. SNMP community details, so avoid logging them -->
+            <cm:property name="CamelLogDebugBodyMaxChars" value="${body.debug}" />
         </cm:default-properties>
     </cm:property-placeholder>
 
@@ -30,11 +32,6 @@
     </bean>
 
     <camelContext id="rpcServer" xmlns="http://camel.apache.org/schema/blueprint">
-        <!-- Exchanges contain credentials i.e. SNMP community details, so avoid logging them -->
-        <properties>
-            <property key="CamelLogDebugBodyMaxChars" value="{{body.debug}}"/>
-        </properties>
-
         <!-- The routes are managed by the CamelRpcServerRouteManager  -->
     </camelContext>
 
